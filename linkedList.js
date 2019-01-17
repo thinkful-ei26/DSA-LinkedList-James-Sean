@@ -185,12 +185,7 @@ function thirdFromLast(list){
   // [ 1, 2, 3, 4]
   let currentNode = list.getHead();
   let prevNode = null;
-  let targetNode = null;//<-- target to return
-  // if head is null at start:
-  if(!list.getHead()){
-    return null;
-  }
-  //head not null here:
+  let targetNode = null; //<-- target to return
   while(currentNode !== null && currentNode.getNext() !== null){
     // target->prev->curr->next(null)
     targetNode = prevNode;
@@ -203,6 +198,27 @@ function thirdFromLast(list){
   }
   return null;
 }
+function middle(list) {
+  // const middle = Math.ceil(size(list)/2);
+  // const middle = size(list)/2; // apparantly this doesn't work?
+  // let temp = list.getHead();
+  // for (let i=1; i<middle; i++) {
+  //   temp = temp.getNext();
+  // }
+  // if (temp) return temp.getVal();
+  // return null;
+  let temp = list.getHead();
+  let next = temp;
+  if (temp === null) {
+    // list is 0 long
+    return null;
+  }
+  while(next !== null && next.getNext() !== null) {
+    temp = temp.getNext();
+    next = next.getNext().getNext();
+  }
+  return temp.getVal();
+}
 
 function main(){
   const SLL = new LinkedList();
@@ -213,13 +229,13 @@ function main(){
   SLL.insertLast('Starbuck');
   SLL.insertLast('Tauhida');
   SLL.remove('squirrel');
-  // SLL.insertBefore('Athena', 'Boomer');
-  // SLL.insertAfter('Hotdog', 'Helo');
-  // SLL.insertAt('Kat', 2);
-  // SLL.remove('Tauhida');
-//  console.log(SLL.toString());
- // reverse(SLL);
+  SLL.insertBefore('Athena', 'Boomer');
+  SLL.insertAfter('Hotdog', 'Helo');
+  SLL.insertAt('Kat', 2);
+  SLL.remove('Tauhida');
+  // console.log(SLL.toString());
+  reverse(SLL);
   console.log(SLL.toString());
-  console.log(thirdFromLast(SLL));
+  console.log(middle(SLL));
 }
 main();
