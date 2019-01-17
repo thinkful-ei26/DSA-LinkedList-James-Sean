@@ -134,6 +134,15 @@ function display(list) {
   out += ' :Tail';
   return out;
 }
+function size(list) {
+  let size = 0;
+  let temp = list.getHead();
+  while (temp !== null) {
+    temp = temp.getNext();
+    size ++;
+  }
+  return size;
+}
 
 function main(){
   const SLL = new LinkedList();
@@ -150,5 +159,6 @@ function main(){
   SLL.insertAt('Kat', 2);
   SLL.remove('Tauhida');
   console.log(SLL.toString());
+  console.log(size(SLL));
 }
 main();
