@@ -24,6 +24,16 @@ class LinkedList {
     this.head = null;
   }
 
+  toString() {
+    let out = 'Head: ';
+    let temp = this.head;
+    while(temp !== null) {
+      out += temp.getVal() + ', ';
+      temp = temp.getNext();
+    }
+    out += ':Tail';
+    return out;
+  }
   getHead() {
     return this.head;
   }
@@ -50,7 +60,7 @@ class LinkedList {
   remove(val) {
     let prev;
     let temp = this.head;
-    while(temp !== null || temp.getVal() !== val) {
+    while(temp !== null && temp.getVal() !== val) {
       prev = temp;
       temp = temp.getNext();
     }
@@ -62,9 +72,18 @@ class LinkedList {
   }
   find(val) {
     let temp = this.head;
-    while(temp !== null || temp.getVal() !== val) {
+    while(temp !== null && temp.getVal() !== val) {
       temp = temp.getNext();
     }
     return Boolean(temp);
   }
 }
+
+// const list = new LinkedList();
+// list.insertFirst('middle');
+// list.insertFirst('first');
+// list.insertLast('last');
+// console.log(list.toString());
+// list.remove('middle');
+// console.log(list.toString());
+// console.log(list.find('last '));
