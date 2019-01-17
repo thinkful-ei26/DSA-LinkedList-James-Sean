@@ -143,6 +143,9 @@ function size(list) {
   }
   return size;
 }
+function isEmpty(list) {
+  return (list.getHead() === null);
+}
 
 function main(){
   const SLL = new LinkedList();
