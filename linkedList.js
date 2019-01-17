@@ -168,6 +168,20 @@ function findLast(list){
   }
   return currentNode;
 }
+function reverse(list) {
+  let temp = list.getHead();
+  let prev = null;
+  let next = null;
+  while(temp !== null) {
+    next = temp.getNext();
+    temp.setNext(prev);
+
+    prev = temp;
+    temp = next;
+  }
+  list.setHead(prev);
+}
+
 function main(){
   const SLL = new LinkedList();
   SLL.insertLast('Apollo');
@@ -178,15 +192,11 @@ function main(){
   SLL.insertLast('Tauhida');
   SLL.remove('squirrel');
   SLL.insertBefore('Athena', 'Boomer');
-  console.log(display(SLL));
   SLL.insertAfter('Hotdog', 'Helo');
   SLL.insertAt('Kat', 2);
   SLL.remove('Tauhida');
   console.log(SLL.toString());
-  console.log(size(SLL));
-
-  // const result = findPrevious(SLL, 'Apollo');
-  // console.log(result);
-  console.log(findLast(SLL));
+  reverse(SLL);
+  console.log(SLL.toString());
 }
 main();
