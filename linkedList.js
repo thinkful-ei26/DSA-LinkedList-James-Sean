@@ -249,18 +249,20 @@ function cycle(list){
 function main(){
   const SLL = new LinkedList();
 
-  SLL.insertLast('Apollo');
-  SLL.insertLast('Boomer');
-  SLL.insertLast('Helo');
-  SLL.insertLast('Husker');
-  SLL.insertLast('Starbuck');
-  SLL.insertLast('Apollo');
-  SLL.remove('squirrel');
-  SLL.insertBefore('Athena', 'Boomer');
-  SLL.insertAfter('Hotdog', 'Helo');
-  SLL.insertAt('Kat', 2);
-  SLL.remove('Tauhida');
-  findLast(SLL).setNext(SLL.getHead());
+  // SLL.insertLast('Apollo');
+  // SLL.insertLast('Boomer');
+  // SLL.insertLast('Helo');
+  // SLL.insertLast('Apollo');
+  // SLL.insertLast('Husker');
+  // SLL.insertLast('Apollo');
+  // SLL.insertLast('Starbuck');
+  // SLL.insertLast('Apollo');
+  // SLL.remove('squirrel');
+  // SLL.insertBefore('Athena', 'Boomer');
+  // SLL.insertAfter('Hotdog', 'Helo');
+  // SLL.insertAt('Kat', 2);
+  // SLL.remove('Tauhida');
+  //findLast(SLL).setNext(SLL.getHead());
   // console.log(SLL.toString());
   //reverse(SLL);
   //console.log(SLL.toString());
