@@ -146,7 +146,28 @@ function size(list) {
 function isEmpty(list) {
   return (list.getHead() === null);
 }
-
+function findPrevious(list, val){
+  
+  let currentNode = list.getHead();
+  let prevNode = null;
+  while(currentNode !== null && currentNode.getVal() !== val){
+    //traverse
+    prevNode = currentNode;
+    currentNode = currentNode.getNext();
+  }
+  //found or is not on list
+  if(currentNode){
+    return prevNode;
+  }
+  return null;
+}
+function findLast(list){
+  let currentNode = list.getHead();
+  while(currentNode !== null && currentNode.getNext()!== null){
+    currentNode = currentNode.getNext();
+  }
+  return currentNode;
+}
 function main(){
   const SLL = new LinkedList();
   SLL.insertLast('Apollo');
@@ -163,5 +184,9 @@ function main(){
   SLL.remove('Tauhida');
   console.log(SLL.toString());
   console.log(size(SLL));
+
+  // const result = findPrevious(SLL, 'Apollo');
+  // console.log(result);
+  console.log(findLast(SLL));
 }
 main();
