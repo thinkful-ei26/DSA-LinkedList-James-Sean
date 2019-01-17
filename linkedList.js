@@ -31,7 +31,8 @@ class LinkedList {
       out += temp.getVal() + ', ';
       temp = temp.getNext();
     }
-    out += ':Tail';
+    out = out.slice(0, out.length - 2);
+    out += ' :Tail';
     return out;
   }
   getHead() {
@@ -121,40 +122,32 @@ class LinkedList {
     return Boolean(temp);
   }
 }
+
+function display(list) {
+  let out = 'Head: ';
+  let temp = list.getHead();
+  while(temp !== null) {
+    out += temp.getVal() + ', ';
+    temp = temp.getNext();
+  }
+  out = out.slice(0, out.length - 2);
+  out += ' :Tail';
+  return out;
+}
+
 function main(){
-  // const list = new LinkedList();
-  // list.insertFirst('middle');
-  // list.insertFirst('first');
-  // list.insertLast('last');
-  // console.log(list.toString());
-  // list.remove('middle');
-  // console.log(list.toString());
-  // console.log(list.find('last '));
   const SLL = new LinkedList();
-  SLL.insertLast("Apollo");
-  SLL.insertLast("Boomer");
-  SLL.insertLast("Helo");
-  SLL.insertLast("Husker");
-  SLL.insertLast("Starbuck");
-  SLL.insertLast("Tauhida");
+  SLL.insertLast('Apollo');
+  SLL.insertLast('Boomer');
+  SLL.insertLast('Helo');
+  SLL.insertLast('Husker');
+  SLL.insertLast('Starbuck');
+  SLL.insertLast('Tauhida');
   SLL.remove('squirrel');
-  // SLL.insertLast(1);
-  // SLL.insertLast(2);
-  // SLL.insertLast(3);
-  // SLL.insertLast(4);
-  // SLL.insertLast(5);
-  // SLL.insertLast(7);
-  // SLL.insertBefore(6, 7);
-  // SLL.insertBefore(6, 9);
-  //SLL.insertAfter(6, 5);
-  // SLL.insertAt(99, 2);
-  // console.log(SLL.toString());
-  // SLL.insertAt(98, 42);
-  // console.log(SLL.toString());
-  SLL.insertBefore("Athena", "Boomer");
-  console.log(SLL.toString());
-  SLL.insertAfter("Hotdog", "Helo");
-  SLL.insertAt("Kat", 2);
+  SLL.insertBefore('Athena', 'Boomer');
+  console.log(display(SLL));
+  SLL.insertAfter('Hotdog', 'Helo');
+  SLL.insertAt('Kat', 2);
   SLL.remove('Tauhida');
   console.log(SLL.toString());
 }
