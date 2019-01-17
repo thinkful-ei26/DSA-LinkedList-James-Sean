@@ -1,4 +1,5 @@
 'use strict';
+const lodash = require('lodash');
 class _Node {
   constructor(val) {
     this.val = val;
@@ -23,7 +24,6 @@ class LinkedList {
   constructor() {
     this.head = null;
   }
-
   toString() {
     let out = 'Head: ';
     let temp = this.head;
@@ -168,6 +168,8 @@ function findLast(list){
   }
   return currentNode;
 }
+
+
 function reverse(list) {
   let temp = list.getHead();
   let prev = null;
@@ -219,23 +221,50 @@ function middle(list) {
   }
   return temp.getVal();
 }
-
+function cycle(list){
+  // [1,2,3,2,3,5,6 n->any old node]
+  let arr=[];//put nodes in here
+  // traverse through list, check if node's(address in mem) a match to <old node table>
+  let currentNode = list.getHead();
+  while (currentNode !== null){
+    //match condition check here
+    arr.push(currentNode);
+    //console.log("here is arr:", arr.length);
+    // if(currentNode.getNext() in arr){
+    //   return true;
+    // }
+    let test = false;
+    arr.forEach(node=>{
+      if(lodash.isEqual(node, currentNode.getNext())){
+        test = true;
+      }
+    });
+    if(test){
+      return true;
+    }
+    currentNode = currentNode.getNext();
+  }
+  return false;
+}
 function main(){
   const SLL = new LinkedList();
+
   SLL.insertLast('Apollo');
   SLL.insertLast('Boomer');
   SLL.insertLast('Helo');
   SLL.insertLast('Husker');
   SLL.insertLast('Starbuck');
-  SLL.insertLast('Tauhida');
+  SLL.insertLast('Apollo');
   SLL.remove('squirrel');
   SLL.insertBefore('Athena', 'Boomer');
   SLL.insertAfter('Hotdog', 'Helo');
   SLL.insertAt('Kat', 2);
   SLL.remove('Tauhida');
+  findLast(SLL).setNext(SLL.getHead());
   // console.log(SLL.toString());
-  reverse(SLL);
-  console.log(SLL.toString());
-  console.log(middle(SLL));
+  //reverse(SLL);
+  //console.log(SLL.toString());
+  //console.log(middle(SLL));
+  console.log(cycle(SLL));
 }
 main();
