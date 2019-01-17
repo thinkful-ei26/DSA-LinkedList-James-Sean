@@ -181,6 +181,28 @@ function reverse(list) {
   }
   list.setHead(prev);
 }
+function thirdFromLast(list){
+  // [ 1, 2, 3, 4]
+  let currentNode = list.getHead();
+  let prevNode = null;
+  let targetNode = null;//<-- target to return
+  // if head is null at start:
+  if(!list.getHead()){
+    return null;
+  }
+  //head not null here:
+  while(currentNode !== null && currentNode.getNext() !== null){
+    // target->prev->curr->next(null)
+    targetNode = prevNode;
+    prevNode = currentNode;
+    currentNode = currentNode.getNext();
+  }
+  //is null so return target
+  if(targetNode){
+    return targetNode.getVal();
+  }
+  return null;
+}
 
 function main(){
   const SLL = new LinkedList();
@@ -191,12 +213,13 @@ function main(){
   SLL.insertLast('Starbuck');
   SLL.insertLast('Tauhida');
   SLL.remove('squirrel');
-  SLL.insertBefore('Athena', 'Boomer');
-  SLL.insertAfter('Hotdog', 'Helo');
-  SLL.insertAt('Kat', 2);
-  SLL.remove('Tauhida');
+  // SLL.insertBefore('Athena', 'Boomer');
+  // SLL.insertAfter('Hotdog', 'Helo');
+  // SLL.insertAt('Kat', 2);
+  // SLL.remove('Tauhida');
+//  console.log(SLL.toString());
+ // reverse(SLL);
   console.log(SLL.toString());
-  reverse(SLL);
-  console.log(SLL.toString());
+  console.log(thirdFromLast(SLL));
 }
 main();
